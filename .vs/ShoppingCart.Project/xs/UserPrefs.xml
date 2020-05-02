@@ -8,7 +8,7 @@
       <File FileName="ShoppingCart.Project/Models/OrderModel.cs" Line="1" Column="1" />
       <File FileName="ShoppingCart.Project/Models/CouponModel.cs" Line="1" Column="1" />
       <File FileName="ShoppingCart.Project/Models/CustomerModel.cs" Line="1" Column="1" />
-      <File FileName="ShoppingCart.Project/Controllers/ShoppingCartController.cs" Line="38" Column="55" />
+      <File FileName="ShoppingCart.Project/Controllers/ShoppingCartController.cs" Line="43" Column="15" />
       <File FileName="ShoppingCart.Project/Services/Interfaces/IShoppingCartService.cs" Line="8" Column="14" />
       <File FileName="ShoppingCart.Project/Services/ShoppingCartService.cs" Line="14" Column="2" />
       <File FileName="ShoppingCart.Project/Utilities/ExternalService.cs" Line="7" Column="41" />
