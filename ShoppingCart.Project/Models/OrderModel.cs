@@ -1,10 +1,8 @@
 ﻿using System;
 namespace ShoppingCart.Project.Models
 {
-    public class Cart
+    public class OrderModel
     {
-        public Cart()
-        {
-        }
+  
     }
 }
