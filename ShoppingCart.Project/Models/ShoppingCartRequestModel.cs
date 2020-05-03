@@ -4,7 +4,7 @@ namespace ShoppingCart.Project.Models
     public class ShoppingCartRequestModel
     {
         public int CartId { get; set; }
-        public Guid SessionId { get; set; }
+        public string SessionId { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
     }

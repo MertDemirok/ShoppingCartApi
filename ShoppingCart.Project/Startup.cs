@@ -31,8 +31,8 @@ namespace ShoppingCart.Project
 
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
             services.AddScoped<IProductsService, ProductsService>();
-            services.AddScoped<ICustomerService, CustomerService>();
-
+            services.AddScoped<ICustomerService, CustomerService>();  
+            services.AddScoped<ICampaignService, CampaignService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

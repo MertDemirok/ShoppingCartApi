@@ -24,13 +24,15 @@ namespace ShoppingCart.Project.Controllers
         private readonly IShoppingCartService _shoppingCartService;
         private readonly ICustomerService _customerService;
         private readonly IProductsService _productsService;
+        private readonly ICampaignService _campaignService;
 
-        public ShoppingCartController(ILogger<ShoppingCartController> logger, IShoppingCartService shoppingCartService, ICustomerService customerService,IProductsService productsService)
+        public ShoppingCartController(ILogger<ShoppingCartController> logger, IShoppingCartService shoppingCartService, ICustomerService customerService,IProductsService productsService, ICampaignService campaignService)
         {
             _logger = logger;
             _shoppingCartService = shoppingCartService;
             _customerService = customerService;
             _productsService = productsService;
+            _campaignService = campaignService;
         }
 
         [HttpPost]
@@ -42,47 +44,69 @@ namespace ShoppingCart.Project.Controllers
                 return BadRequest(new { BadRequest = "CardId OR SessionId cannot null" });
             }
 
-            //TODO: session id ver cart id ile customerı kontrol et gelen customerın eskı orderını kontrol et
-            //TODO:  customerın orderlarının hangı kategorıden alındıgı mıktarı ?
-            //TODO:  customer dummy datası yarat
-            //TODO:  teknik olarak projeı olgunlastır. Attrıbute valitation error handle vs.
+            //sample creating a new category (
+            var currentProduct = _productsService.GetProductById(Request.Product.Id);
+            var currentCustomer =  _customerService.GetCustomer(Request.SessionId);
 
-
-
-
-            //sample creating a new category (I chose get a category with product dummy data )
-            var result = _productsService.GetProductById(Request.Product.Id);
-
-            //Products can be added to a shopping cart with quantity 
-            var currentCart = _shoppingCartService.AddItem(new CartModel()
+            if (currentProduct == null && currentProduct.Category == null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, new { error = "" });
+            }
+            var cart = new CartModel()
             {
                 Product = new ProductModel()
                 {
-                    Category = result.Category,
-                    Price = result.Price,
-                    ProductId = result.ProductId,
-                    Title = result.Title
-                }
-            });
+                    Category = currentProduct.Category,
+                    Price = currentProduct.Price,
+                    ProductId = currentProduct.ProductId,
+                    Title = currentProduct.Title
+                },
+                Quantity = Request.Quantity,
+                SessionId = Request.SessionId
+            };
 
-            if (result == null && result.Category == null )
+
+            //same category count
+            var lastOrderCount = currentCustomer.Orders.Where(x => x.CategoryId == currentProduct.Category.CategoryId).Count();
+
+
+            var currentCampaigns = _campaignService.GetCampaign(currentProduct.Category.CategoryId);
+
+            if (currentCampaigns.Count > 0)
             {
-                return StatusCode(StatusCodes.Status409Conflict,new { error= ""});
+               var campaignDiscount = _shoppingCartService.getCampaignDiscount(currentCampaigns, cart);
+
+                _shoppingCartService.applyDiscounts(campaignDiscount);
             }
 
-            //TODO: 0 alanları dolacak
+
+           
+            //currentCoupons = ...
+
+            var totalDiscount = 0;
+            var totalPrice = 0;
+            var unitPrice = currentProduct.Price;
+
+            //Products can be added to a shopping cart with quantity 
+            var currentCart = _shoppingCartService.AddItem(cart);
+
+
+
             var Response = new ShoppingCartResponseModel()
             {
                 CategoryName = currentCart.Product.Category.Title,
                 ProductName = currentCart.Product.Title,
                 Quantity = Request.Quantity,
-                TotalDiscount = 0,
-                TotalPrice = 0,
-                UnitPrice = 0
+                TotalDiscount = totalDiscount,
+                TotalPrice = totalPrice,
+                UnitPrice = unitPrice
             };
-            
 
-            return Ok(new {Status = "OK" ,ResponseCode = HttpContext.Response.StatusCode, Data  = Response });
+            return Ok(new {
+                Status = "OK" ,
+                ResponseCode = HttpContext.Response.StatusCode,
+                Data  = Response
+            });
         }
 
         [HttpGet]
