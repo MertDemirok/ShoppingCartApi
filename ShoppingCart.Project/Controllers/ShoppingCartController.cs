@@ -22,42 +22,67 @@ namespace ShoppingCart.Project.Controllers
 
         private readonly ILogger<ShoppingCartController> _logger;
         private readonly IShoppingCartService _shoppingCartService;
+        private readonly ICustomerService _customerService;
+        private readonly IProductsService _productsService;
 
-        public ShoppingCartController(ILogger<ShoppingCartController> logger, IShoppingCartService shoppingCartService)
+        public ShoppingCartController(ILogger<ShoppingCartController> logger, IShoppingCartService shoppingCartService, ICustomerService customerService,IProductsService productsService)
         {
             _logger = logger;
             _shoppingCartService = shoppingCartService;
+            _customerService = customerService;
+            _productsService = productsService;
         }
 
         [HttpPost]
-        public IActionResult Post(ShoppingCartRequestModel cartItem)
+        public IActionResult Post(ShoppingCartRequestModel Request)
         {
 
-
-            var subCategoryObj = new SubCategoryModel() { };
-            var categoryObj = new CategoryModel() { };
-            var productObj = new ProductModel() { };
-
-
-            var cartObj = new CartModel()
-             {
-
-             };
-
-            _shoppingCartService.AddItem(new CartModel()
+            if (Request.CartId == 0 || Request.SessionId == null)
             {
-                
-            });
-            /*
-            if (req.CartId == 0)
-            {
-                return StatusCode(StatusCodes.Status409Conflict,new { error= "sıkıtnıvar"});
-            }else if("" == "test")
-            {
-                return BadRequest(new { badreq = "sıkıtnıvar" });
+                return BadRequest(new { BadRequest = "CardId OR SessionId cannot null" });
             }
-            */
-            return Ok("");
+
+            //TODO: session id ver cart id ile customerı kontrol et gelen customerın eskı orderını kontrol et
+            //TODO:  customerın orderlarının hangı kategorıden alındıgı mıktarı ?
+            //TODO:  customer dummy datası yarat
+            //TODO:  teknik olarak projeı olgunlastır. Attrıbute valitation error handle vs.
+
+
+
+
+            //sample creating a new category (I chose get a category with product dummy data )
+            var result = _productsService.GetProductById(Request.Product.Id);
+
+            //Products can be added to a shopping cart with quantity 
+            var currentCart = _shoppingCartService.AddItem(new CartModel()
+            {
+                Product = new ProductModel()
+                {
+                    Category = result.Category,
+                    Price = result.Price,
+                    ProductId = result.ProductId,
+                    Title = result.Title
+                }
+            });
+
+            if (result == null && result.Category == null )
+            {
+                return StatusCode(StatusCodes.Status409Conflict,new { error= ""});
+            }
+
+            //TODO: 0 alanları dolacak
+            var Response = new ShoppingCartResponseModel()
+            {
+                CategoryName = currentCart.Product.Category.Title,
+                ProductName = currentCart.Product.Title,
+                Quantity = Request.Quantity,
+                TotalDiscount = 0,
+                TotalPrice = 0,
+                UnitPrice = 0
+            };
+            
+
+            return Ok(new {Status = "OK" ,ResponseCode = HttpContext.Response.StatusCode, Data  = Response });
         }
 
         [HttpGet]

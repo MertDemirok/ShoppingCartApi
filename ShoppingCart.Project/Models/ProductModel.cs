@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace ShoppingCart.Project.Models
 {
     public class ProductModel

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using ShoppingCart.Project.Models;
 
 namespace ShoppingCart.Project.Utilities
@@ -8,12 +10,7 @@ namespace ShoppingCart.Project.Utilities
     {
         private static ExternalService _externalService;
 
-        public UtilitiyService()
-        {
-            
-        }
-
-        public List<Value> GetTrendyolCategoryList(string name)
+        public List<Value> GetTrendyolSubCategoryList(string name)
         {
             _externalService = new ExternalService();
            
@@ -47,6 +44,15 @@ namespace ShoppingCart.Project.Utilities
             return retval;
         }
 
+        public T ReadJsonData<T>(string name)
+        {
+            
+            using (StreamReader r = new StreamReader(name))
+            {
+                string json = r.ReadToEnd();
+                return  JsonConvert.DeserializeObject<T>(json);
+            }
+        }
 
     }
 }

@@ -6,5 +6,6 @@ namespace ShoppingCart.Project.Models
         public string CouponId { get; set; }
         public string Name { get; set; }
         public string Desciription { get; set; }
+        public int MinimumCartAmount { get; set; }
     }
 }

@@ -1,0 +1,9 @@
+﻿{
+  "Coupons": [
+    {
+      "CouponId": 1,
+      "Name": "Coupon for 100 TL",
+      "Desciription": "Coupon for 100 TL min purchase amount for a 10% discount"
+    }
+  ]
+}

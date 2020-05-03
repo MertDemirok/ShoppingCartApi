@@ -39,3 +39,7 @@
 /Users/mertdemirok/Projects/ShoppingCartApi/ShoppingCart.Project/obj/Debug/netcoreapp3.1/ShoppingCart.Project.dll
 /Users/mertdemirok/Projects/ShoppingCartApi/ShoppingCart.Project/obj/Debug/netcoreapp3.1/ShoppingCart.Project.pdb
 /Users/mertdemirok/Projects/ShoppingCartApi/ShoppingCart.Project/obj/Debug/netcoreapp3.1/ShoppingCart.Project.genruntimeconfig.cache
+/Users/mertdemirok/Projects/ShoppingCartApi/ShoppingCart.Project/bin/Debug/netcoreapp3.1/Datas/DummyCampaigns.json
+/Users/mertdemirok/Projects/ShoppingCartApi/ShoppingCart.Project/bin/Debug/netcoreapp3.1/Datas/DummyCoupons.json
+/Users/mertdemirok/Projects/ShoppingCartApi/ShoppingCart.Project/bin/Debug/netcoreapp3.1/Datas/DummyCustomers.json
+/Users/mertdemirok/Projects/ShoppingCartApi/ShoppingCart.Project/bin/Debug/netcoreapp3.1/Datas/DummyProducts.json

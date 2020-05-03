@@ -1,0 +1,65 @@
+﻿{
+  "Products": [
+    {
+      "ProductId": 4749470,
+      "name": "Beyaz File Kadın Yürüyüş Ayakkabısı Y5700",
+      "price" :  650,
+      "brand": {
+        "id": 16728,
+        "name": "İnan Ayakkabı"
+      },
+      "category": {
+        "Id": 2133434,
+        "Title": "Kadin Ayakkabi",
+        "SubCategory": [
+          {
+            "id": "1352",
+            "text": "Günlük Ayakkabı"
+          },
+          {
+            "id": "112",
+            "text": "Sandalet&Terlik"
+          },
+          {
+            "id": "109",
+            "text": "Spor Ayakkabı"
+          },
+          {
+            "id": "1351",
+            "text": "Bot ve Çizme"
+          }
+        ]
+      }
+    },
+    {
+      "ProductId": 4749471,
+      "name": "test",
+      "brand": {
+        "id": 16728,
+        "name": "İnadsfsdfsn Ayakkabı"
+      },
+      "category": {
+        "Id": 2133434,
+        "Title": "",
+        "SubCategory": [
+          {
+            "id": "1352",
+            "text": "Günsdfsdfsdflük Ayakkabı"
+          },
+          {
+            "id": "112",
+            "text": "fsdfsdfsdfs&Terlik"
+          },
+          {
+            "id": "109",
+            "text": "Spsdfsdfor Ayakkabı"
+          },
+          {
+            "id": "1351",
+            "text": "Bosdfsdfsdt ve Çizme"
+          }
+        ]
+      }
+    }
+  ]
+}
