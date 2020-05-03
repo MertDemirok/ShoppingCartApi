@@ -1,0 +1,35 @@
+﻿{
+  "campaigns": [
+    {
+      "CampaignId": 1,
+      "CategoryId": 2133434,
+      "Name": "50% campaign if bought more than 5 items",
+      "Desciription": "campaign rule 50% on a category if bought more than 5 items",
+      "Type": "DiscountType.Rate",
+      "Percent": 50,
+      "DiscountPrice": 0,
+      "itemCount": 5
+    },
+    {
+      "CampaignId": 2,
+      "CategoryId": 2133434,
+      "Name": "20% Campaign if bought more than 3 items",
+      "Desciription": "can be 20% on a category if bought more than 3 items",
+      "Type": "DiscountType.Rate",
+      "Percent": 20,
+      "DiscountPrice": 0,
+      "itemCount": 3
+    },
+    {
+      "CampaignId": 3,
+      "CategoryId": 2133434,
+      "Name": "5 TL discount if bought more than items",
+      "Desciription": "5 TL amount discount on a category if bought more than  items",
+      "Type": "DiscountType.Amount",
+      "Percent": 0,
+      "DiscountPrice": 5,
+      "itemCount": 1
+    }
+
+  ]
+}

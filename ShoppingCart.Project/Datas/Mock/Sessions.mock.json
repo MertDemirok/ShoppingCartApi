@@ -1,0 +1,34 @@
+﻿[
+  {
+    "Id": 1,
+    "SessionId": "7009811c-3b4a-4dcb-8b07-9b075e67f299",
+    "CustomerHashId": "dnoFHt2/Tbo=",
+    "CartId": 123456,
+    "SessionStartDate": "1/15/2020",
+    "SessionEndDate": "5/29/2019"
+  },
+  {
+    "Id": 2,
+    "SessionId": "56b86883-a7d7-4297-8412-4c2e40c8aa33",
+    "CustomerHashId": "Wnw+NOzf6tY=",
+    "CartId": 135798,
+    "SessionStartDate": "11/12/2019",
+    "SessionEndDate": "9/20/2019"
+  },
+  {
+    "Id": 3,
+    "SessionId": "e987303c-da12-451d-82b9-489f02cd0d24",
+    "CustomerHashId": "lSHSmL4Kd4I=",
+    "CartId": 445345,
+    "SessionStartDate": "6/17/2019",
+    "SessionEndDate": "9/19/2019"
+  },
+  {
+    "Id": 4,
+    "SessionId": "618eda71-a761-4d8f-8479-cf01fe6bb022",
+    "CustomerHashId": "qEcaPHXBnIo=",
+    "CartId": 796543,
+    "SessionStartDate": "9/27/2019",
+    "SessionEndDate": "10/17/2019"
+  }
+]
